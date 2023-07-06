@@ -2,11 +2,11 @@ import { Col, Container, Row } from "react-bootstrap";
 
 export default function NotFound() {
   return (
-    <Container style={{ backgroundColor: "red" }}>
+    <Container>
       <Row>
-        <Col md={6}>
+        <Col>
           <h1 className="text-center">404</h1>
-          <p className="text-center">Page not found</p>
+          <h1 className="text-center">Page not found</h1>
         </Col>
       </Row>
     </Container>

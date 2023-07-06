@@ -1,12 +1,15 @@
-import MainLayout from "./layout/layout"
-import AppRoutes from "./routes"
-function App() {
+import { CategoriesProvider } from "./context/CategoriesProvider";
+import MainLayout from "./layout/layout";
+import AppRoutes from "./routes";
 
+function App() {
   return (
     <MainLayout>
-      <AppRoutes />
+      <CategoriesProvider>
+        <AppRoutes />
+      </CategoriesProvider>
     </MainLayout>
-  )
+  );
 }
 
-export default App
+export default App;
