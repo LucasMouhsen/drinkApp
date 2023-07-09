@@ -46,7 +46,7 @@ const DrinksProvider = ({children}) =>{
 
     useEffect(() => {
         getRecipe()
-    },[])
+    },[drinkId])
 
     const contextValues = {
         drinks,
@@ -69,4 +69,5 @@ DrinksProvider.propTypes = {
     children: PropTypes.node.isRequired
 }
 
-export {DrinksContext, DrinksProvider}
+export default DrinksContext;
+export {DrinksProvider}

@@ -1,8 +1,13 @@
+import DrinkDetailModal from "../../components/DrinkModal/drinkModal";
+import DrinksList from "../../components/DrinksList/drinkList";
+import SearchForm from "../../components/SearchForm/searchForm";
 
 export default function Home (){
     return (
         <div>
-            <h1 className="p-5">Esto es el home</h1>
+            <SearchForm/>
+            <DrinksList/>
+            <DrinkDetailModal/>
         </div>
     )
 }
