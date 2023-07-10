@@ -1,11 +1,11 @@
 import {Row} from 'react-bootstrap';
 import {useDrinks} from "../../hooks/useDrinks";
-import {DrinkCard} from '../DrinkCard/drinkCard';
+import DrinkCard from '../DrinkCard';
 
 export default function DrinksList(){
     const {drinks} = useDrinks()
 
-    if (drinks.len === 0) {
+    if (drinks.length === 0) {
         return (
             <Row className='p-5 m-5'>
                 <h1 className='text-center'>No hay resultados</h1>
@@ -16,7 +16,7 @@ export default function DrinksList(){
         <Row className='mt-5'>
             {
                 drinks.map((drink) =>(
-                    <DrinkCard key={drinks.idDrink} drink={drink}/>
+                    <DrinkCard key={drink.idDrink} drink={drink}/>
                 ))
             }
         </Row>

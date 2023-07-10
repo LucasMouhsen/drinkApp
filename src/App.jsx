@@ -6,11 +6,11 @@ import AppRoutes from "./routes";
 function App() {
   return (
     <MainLayout>
-      <CategoriesProvider>
-        <DrinksProvider>
+      <DrinksProvider>
+        <CategoriesProvider>
           <AppRoutes />
-        </DrinksProvider>
-      </CategoriesProvider>
+        </CategoriesProvider>
+      </DrinksProvider>
     </MainLayout>
   );
 }

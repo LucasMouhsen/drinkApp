@@ -1,6 +1,6 @@
-import DrinkDetailModal from "../../components/DrinkModal/drinkModal";
-import DrinksList from "../../components/DrinksList/drinkList";
-import SearchForm from "../../components/SearchForm/searchForm";
+import DrinkDetailModal from "../../components/DrinkModal";
+import DrinksList from "../../components/DrinksList";
+import SearchForm from "../../components/SearchForm";
 
 export default function Home (){
     return (

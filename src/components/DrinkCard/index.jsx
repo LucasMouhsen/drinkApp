@@ -3,11 +3,11 @@ import {useDrinks} from "../../hooks/useDrinks";
 import  PropTypes  from "prop-types";
 
 export default function DrinkCard({ drink }) {
-    const { handleModalClick, handleDrinkClink,  } = useDrinks()
+    const { handleModalClick, handleDrinkIdClick,  } = useDrinks()
   return (
     <Col md={6} lg={3}>
       <Card className="mb-4">
-        <Card.img
+        <Card.Img
           variant="top"
           src={drink.strDrinkThumb}
           alt={`Imagen de ${drink.strDrink}`}
@@ -21,7 +21,7 @@ export default function DrinkCard({ drink }) {
               className="w-100 text-uppercase mt-2"
               onClick={() => {
                 handleModalClick();
-                handleDrinkClink(drink.idDrink);
+                handleDrinkIdClick(drink.idDrink);
               }}
             >
                 Ver Receta

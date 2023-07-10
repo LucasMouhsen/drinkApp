@@ -14,7 +14,7 @@ export default function SearchForm(){
     }
     const validationSchema = Yup.object({
         name: Yup.string().required('El campo nombre es obligatorio'),
-        categories: Yup.string().required('Selecciona un a categoria')
+        category: Yup.string().required('Selecciona un a categoria')
     })
 
     const handleSubmit = (values) =>{
@@ -40,38 +40,31 @@ export default function SearchForm(){
                         <Row>
                             <Col md={6}>
                                 <Form.Group className='mb-3'>
-                                    <label>
-                                        <Form.label htmlFor="name">
-                                            Nombre Bebida
-                                        </Form.label>
-                                        <Field
-                                            id="name"
-                                            type="text"
-                                            placeholder="Ej: Tequila, Vodka, etc"
-                                            name="name"
-                                            as={Form.Control}
-                                        />
-                                        <ErrorMessage
-                                            name="name"
-                                            component={Form.Text}
-                                            className='text-danger'
-                                        />
-                                    </label>
+                                    <Form.Label htmlFor="name">Nombre Bebida</Form.Label>
+                                    <Field
+                                        id="name"
+                                        type="text"
+                                        placeholder="Ej: Tequila, Vodka, etc"
+                                        name="name"
+                                        as={Form.Control}
+                                    />
+                                    <ErrorMessage
+                                        name="name"
+                                        component={Form.Text}
+                                        className='text-danger'
+                                    />
                                 </Form.Group>
                             </Col>
                             <Col md={6}>
                                 <Form.Group className='mb-3'>
-                                    <Form.label htmlFor="category">
-                                        Categoria Bebida
-                                    </Form.label>
+                                    <Form.Label htmlFor="category">Categoria Bebida</Form.Label>
                                     <Field
                                     id="category"
-                                    /* type="select" */
                                     name="category"
                                     as={Form.Select}
                                     placeholder="- Selecciona Categoria -"
                                     >
-                                        <option disabled>- Selecciona Categoria -</option>
+                                        <option>- Selecciona Categoria -</option>
                                         {
                                             categories.map((category) => (
                                                 <option
@@ -110,3 +103,4 @@ export default function SearchForm(){
         </Formik>
     )
 }
+
