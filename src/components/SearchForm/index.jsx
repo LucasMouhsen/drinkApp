@@ -9,12 +9,12 @@ export default function SearchForm(){
     const { getDrink, loading } = useDrinks();
 
     const initialValues = {
-        name: '',
-        category: ""
+        strDrink: '',
+        category: ''
     }
     const validationSchema = Yup.object({
-        name: Yup.string().required('El campo nombre es obligatorio'),
-        category: Yup.string().required('Selecciona un a categoria')
+        strDrink: Yup.string().required('El campo nombre es obligatorio'),
+        category: Yup.string()
     })
 
     const handleSubmit = (values) =>{
@@ -40,16 +40,16 @@ export default function SearchForm(){
                         <Row>
                             <Col md={6}>
                                 <Form.Group className='mb-3'>
-                                    <Form.Label htmlFor="name">Nombre Bebida</Form.Label>
+                                    <Form.Label htmlFor="strDrink">Nombre Bebida</Form.Label>
                                     <Field
-                                        id="name"
-                                        type="text"
+                                        id="strDrink"
+                                        /* type="text" */
                                         placeholder="Ej: Tequila, Vodka, etc"
-                                        name="name"
+                                        name="strDrink"
                                         as={Form.Control}
                                     />
                                     <ErrorMessage
-                                        name="name"
+                                        name="strDrink"
                                         component={Form.Text}
                                         className='text-danger'
                                     />

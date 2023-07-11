@@ -24,7 +24,7 @@ const DrinksProvider = ({children}) =>{
         try {
             setLoading(true)
 
-            const drinksData = await filterDrinksService(data.name, data.category);
+            const drinksData = await filterDrinksService(data.strDrink, data.category);
             setDrinks(drinksData)
         } catch (error) {
             console.error(error);
