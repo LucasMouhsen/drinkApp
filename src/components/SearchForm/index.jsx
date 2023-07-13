@@ -13,8 +13,8 @@ export default function SearchForm(){
         category: ''
     }
     const validationSchema = Yup.object({
-        strDrink: Yup.string().required('El campo nombre es obligatorio'),
-        category: Yup.string()
+        strDrink: Yup.string()/* .required('El campo nombre es obligatorio') */,
+        category: Yup.string().required('El campo categoria es obligatorio'),
     })
 
     const handleSubmit = (values) =>{

@@ -17,20 +17,8 @@ const filterDrinksService = async (strDrink, category) => {
     try {
         const url = `${apiUrl}filter.php?s=${strDrink}&c=${category}`;
         const { data } = await axios.get(url);
-        const bebidas = data.drinks;
-        const arrayBebidas = [];
-
-        bebidas.forEach(bebida => {
-            const nombreBebida = bebida.strDrink.toLowerCase();
-            const nombreFiltro = strDrink.toLowerCase();
-
-            if (nombreBebida.includes(nombreFiltro)) {
-                arrayBebidas.push(bebida);
-            }
-        });
-
-
-        return arrayBebidas;
+        return data.drinks //quitar si queres filtrar
+        
     } catch (error) {
         console.error(error);
         throw new Error("Hubo un error al obtener las bebidas");

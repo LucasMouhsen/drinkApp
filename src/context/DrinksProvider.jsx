@@ -25,7 +25,24 @@ const DrinksProvider = ({children}) =>{
             setLoading(true)
 
             const drinksData = await filterDrinksService(data.strDrink, data.category);
-            setDrinks(drinksData)
+            const drinksWithPrice = drinksData.map((drink)=>{
+                return {
+                    ...drink,
+                    price: Math.floor(Math.random()*101), /* Se agrega precio random */
+                }
+            })
+            /* Se filtra ya que la api no funciona correctamente */
+            const arrayDrinks = [];
+
+            drinksWithPrice.forEach(drink => {
+                const nameDrink = drink.strDrink.toLowerCase();
+
+                if (nameDrink.includes(data.strDrink.toLowerCase())) {
+                    arrayDrinks.push(drink);
+                }
+            });
+            setDrinks(arrayDrinks)
+            /* setDrinks(drinksData) */
         } catch (error) {
             console.error(error);
         }
