@@ -42,6 +42,7 @@ const DrinksProvider = ({children}) =>{
                 }
             });
             setDrinks(arrayDrinks)
+            setLoading(false)
             /* setDrinks(drinksData) */
         } catch (error) {
             console.error(error);
