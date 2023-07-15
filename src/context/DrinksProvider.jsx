@@ -1,34 +1,34 @@
 import { createContext, useState, useEffect } from "react";
 import PropTypes from 'prop-types';
-import { filterDrinksService, getRecipeService} from "../services/drink.service"
+import { filterDrinksService, getRecipeService } from "../services/drink.service"
 
 
 const DrinksContext = createContext();
 
-const DrinksProvider = ({children}) =>{
+const DrinksProvider = ({ children }) => {
     const [drinks, setDrinks] = useState([]);
     const [modal, setModal] = useState(false);
     const [drinkId, setDrinkId] = useState(null);
     const [recipe, setRecipe] = useState({});
     const [loading, setLoading] = useState(false);
 
-    const handleModalClick = () =>{
+    const handleModalClick = () => {
         setModal(!modal)
     }
 
-    const handleDrinkIdClick = (id) =>{
+    const handleDrinkIdClick = (id) => {
         setDrinkId(id)
     }
-    
-    const getDrink = async (data) =>{
+
+    const getDrink = async (data) => {
         try {
             setLoading(true)
 
             const drinksData = await filterDrinksService(data.strDrink, data.category);
-            const drinksWithPrice = drinksData.map((drink)=>{
+            const drinksWithPrice = drinksData.map((drink) => {
                 return {
                     ...drink,
-                    price: Math.floor(Math.random()*101), /* Se agrega precio random */
+                    price: Math.floor(Math.random() * 101), /* Se agrega precio random */
                 }
             })
             /* Se filtra ya que la api no funciona correctamente */
@@ -49,7 +49,7 @@ const DrinksProvider = ({children}) =>{
         }
     }
 
-    const getRecipe = async () =>{
+    const getRecipe = async () => {
         if (!drinkId) return;
         try {
             setLoading(true)
@@ -57,14 +57,14 @@ const DrinksProvider = ({children}) =>{
             setRecipe(recipeData)
         } catch (error) {
             console.error(error)
-        } finally{
+        } finally {
             setLoading(false)
         }
     }
 
     useEffect(() => {
         getRecipe()
-    },[drinkId])
+    }, [drinkId])
 
     const contextValues = {
         drinks,
@@ -88,4 +88,4 @@ DrinksProvider.propTypes = {
 }
 
 export default DrinksContext;
-export {DrinksProvider}
+export { DrinksProvider }
