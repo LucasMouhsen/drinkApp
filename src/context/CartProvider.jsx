@@ -32,13 +32,18 @@ export const CartProvider = ({ children }) =>{
         return updatedPrice
     }
 
+function sendOrder(){
+    alert(JSON.stringify(state))
+}
+
     const cartValues = {
         cart: state,
         addToCart,
         removeOneFromCart,
         removeAllFromCart,
         clearCart,
-        totalPrice
+        totalPrice,
+        sendOrder
     }
     return (
         <CartContext.Provider value={cartValues}>

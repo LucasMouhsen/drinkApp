@@ -1,25 +1,16 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import styles from "./CartModal.module.css"
 import { faXmarkCircle } from "@fortawesome/free-regular-svg-icons"
-import { faMinus, faPlus, faTrash } from "@fortawesome/free-solid-svg-icons"
 import useModal from "../../hooks/useModal"
 import useCart from "../../hooks/useCart"
+import { ModalCard } from "./components/Card"
+
 
 export default function CartModal() {
     const { isOpen, toogleModal } = useModal()
-    const { cart, addToCart, removeOneFromCart, removeAllFromCart, clearCart, totalPrice } = useCart();
+    const { cart, clearCart, totalPrice, sendOrder } = useCart();
 
-    function handleAddToCart(drink) {
-        addToCart(drink)
-    }
-    function handleRemoveOneFromCart(idDrink) {
-        removeOneFromCart(idDrink)
-    }
-    function handleRemoveAllFromCart(idDrink) {
-        removeAllFromCart(idDrink)
-    }
     function handleClearCart() {
-        console.log("Limpiando carrito")
         clearCart()
     }
 
@@ -32,30 +23,18 @@ export default function CartModal() {
                     <div className={styles.modalDriksListContainer}>
                         {
                             cart.cartItems.map((drink) => (
-                                <article key={drink.idDrink} className={styles.card}>
-                                    <img src={drink.strDrinkThumb} alt="" />
-                                    <div className={styles.drinkiInfo}>
-                                        <span>{drink.strDrink}</span>
-                                        <span>$ {drink.price}.000</span>
-                                    </div>
-                                    <div className={styles.counter}>
-                                        <FontAwesomeIcon icon={faMinus} className={styles.iconCounter}  onClick={() => handleRemoveOneFromCart(drink.idDrink)}/>
-                                        <span className={styles.numberCounter}>{drink.quantity}</span>
-                                        <FontAwesomeIcon icon={faPlus} className={styles.iconCounter}  onClick={()=> handleAddToCart(drink)}/>
-                                    </div>
-                                    <FontAwesomeIcon icon={faTrash} className={styles.trash} onClick={() => handleRemoveAllFromCart(drink.idDrink)}/>
-                                </article>
+                                <ModalCard key={drink.idDrink} drink={drink}/>
                             ))
                         }
 
                     </div>
                 </section>
                 <aside className={styles.cardAside}>
-                    <p>SubTotal: $ {totalPrice()}.000</p>
-                    <p>Total: $ {totalPrice()}.000</p>
+                    <p>SubTotal: $ {totalPrice()}</p>
+                    <p>Total: $ {totalPrice()}</p>
                     <div className={styles.btnContainer}>
                         <button className={styles.clearCart} onClick={() => handleClearCart()}>Vaciar carrito</button>
-                        <button className={styles.confirmOrder}>Confirmar compra</button>
+                        <button className={styles.confirmOrder} onClick={() => sendOrder()}>Confirmar compra</button>
                     </div>
                 </aside>
             </div>
