@@ -1,12 +1,14 @@
 import { actionTypes } from "../actions/cart.actions"
 export const cartInitialState = {
     cartItems: [],
+    totalPrice: 0,
 }
 
 export function cartReducer(state, { payload, type }) {
     const { idDrink } = payload;
     let drinkIsInCart = state.cartItems.find((item) => item.idDrink === idDrink);
 
+    
     switch (type) {
         case actionTypes.ADD_TO_CART:
             if (drinkIsInCart) {
@@ -16,6 +18,7 @@ export function cartReducer(state, { payload, type }) {
                             ...item,
                             quantity: item.quantity + 1,
                         };
+                        
                     }
                     return item;
                 });

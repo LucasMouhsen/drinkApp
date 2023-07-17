@@ -5,27 +5,13 @@ import useCart from "../../hooks/useCart"
 
 export default function DrinkCard({ drink }) {
   const { handleModalClick, handleDrinkIdClick, } = useDrinks()
-  const {addToCart, removeOneFromCart, removeAllFromCart, clearCart} = useCart();
+  const {addToCart} = useCart();
  
 
   function handleAddToCart(drink){
-    console.log("Agregado al carrito")
     addToCart(drink)
   }
-  function handleRemoveOneFromCart(drink){
-    console.log("Eliminando una bebida")
-    removeOneFromCart(drink)
-  }
-  function handleRemoveAllFromCart(drink){
-    console.log("Eliminando todas las bebidas")
-    removeAllFromCart(drink)
-  }
-  function handleClearCart(){
-    console.log("Limpiando carrito")
-    clearCart()
-  }
-
-  return (
+    return (
     <Col md={6} lg={3}>
       <Card className="mb-4">
         <Card.Img
@@ -57,30 +43,6 @@ export default function DrinkCard({ drink }) {
               </Button>
               
             </div>
-            {/* <div>
-            <Button
-                variant="primary"
-                className="w-50 text-uppercase mt-2"
-                onClick={() => handleRemoveOneFromCart(drink.idDrink)}
-              >
-                eliminar
-              </Button>
-              <Button
-                variant="primary"
-                className="w-50 text-uppercase mt-2"
-                onClick={() => handleRemoveAllFromCart(drink.idDrink)}
-              >
-                eliminar todo
-              </Button>
-            </div>
-            <Button
-                variant="primary"
-                className="w-50 text-uppercase mt-2"
-                onClick={() => handleClearCart()}
-              >
-                Limpiar carrito
-              </Button> */}
-
         </Card.Body>
       </Card>
     </Col>

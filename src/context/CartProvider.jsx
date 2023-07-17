@@ -20,11 +20,16 @@ export const CartProvider = ({ children }) =>{
         dispatch({ type: actionTypes.REMOVE_ALL_FROM_CART, payload: { idDrink } })
 
     }
-    function clearCart() {
-        dispatch({ type: actionTypes.CLEAR_CART })
+    function clearCart(idDrink) {
+        dispatch({ type: actionTypes.CLEAR_CART, payload: { idDrink } })
     }
-    function loading() {
-
+    function totalPrice() {
+        let updatedPrice = 0;
+        state.cartItems.forEach((drink) => {
+            updatedPrice += drink.quantity * drink.price;
+            state.totalPrice = updatedPrice
+        });
+        return updatedPrice
     }
 
     const cartValues = {
@@ -33,7 +38,7 @@ export const CartProvider = ({ children }) =>{
         removeOneFromCart,
         removeAllFromCart,
         clearCart,
-        loading,
+        totalPrice
     }
     return (
         <CartContext.Provider value={cartValues}>
