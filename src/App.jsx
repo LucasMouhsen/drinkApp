@@ -1,3 +1,5 @@
+import { BrowserRouter as Router } from "react-router-dom";
+import { AuthProvider } from "./context/AuthProvide";
 import { CartProvider } from "./context/CartProvider";
 import { CategoriesProvider } from "./context/CategoriesProvider";
 import { DrinksProvider } from "./context/DrinksProvider";
@@ -7,17 +9,17 @@ import AppRoutes from "./routes";
 
 function App() {
   return (
-    <ModalProvider>
-      <CartProvider>
-        <MainLayout>
-          <DrinksProvider>
-            <CategoriesProvider>
-              <AppRoutes />
-            </CategoriesProvider>
-          </DrinksProvider>
-        </MainLayout>
-      </CartProvider>
-    </ModalProvider>
+        <ModalProvider>
+          <CartProvider>
+            <MainLayout>
+              <DrinksProvider>
+                <CategoriesProvider>
+                  <AppRoutes />
+                </CategoriesProvider>
+              </DrinksProvider>
+            </MainLayout>
+          </CartProvider>
+        </ModalProvider>
   );
 }
 
