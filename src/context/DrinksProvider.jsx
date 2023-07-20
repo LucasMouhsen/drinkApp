@@ -1,12 +1,13 @@
 import { createContext, useState, useEffect } from "react";
 import PropTypes from 'prop-types';
-import { filterDrinksService, getRecipeService } from "../services/drink.service"
+import { filterDrinksService, getRandomDrinksService, getRecipeService } from "../services/drink.service"
 
 
 const DrinksContext = createContext();
 
 const DrinksProvider = ({ children }) => {
     const [drinks, setDrinks] = useState([]);
+    const [random, setRandom] = useState([])
     const [modal, setModal] = useState(false);
     const [drinkId, setDrinkId] = useState(null);
     const [recipe, setRecipe] = useState({});
@@ -19,6 +20,18 @@ const DrinksProvider = ({ children }) => {
     const handleDrinkIdClick = (id) => {
         setDrinkId(id)
     }
+
+    const getRandomDrink = async () => {
+        const drinksData = await getRandomDrinksService();
+        const drinksWithPrice = drinksData.map((drink) => {
+            return {
+                ...drink,
+                price: Math.floor(Math.random() * 101), /* Se agrega precio random */
+            }
+        })
+        return setRandom(drinksWithPrice);
+    }
+
 
     const getDrink = async (data) => {
         try {
@@ -74,6 +87,8 @@ const DrinksProvider = ({ children }) => {
         handleDrinkIdClick,
         handleModalClick,
         getDrink,
+        random,
+        getRandomDrink
     }
 
     return (

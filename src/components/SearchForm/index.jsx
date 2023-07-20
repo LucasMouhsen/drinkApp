@@ -40,7 +40,7 @@ export default function SearchForm(){
                         <Row>
                             <Col md={6}>
                                 <Form.Group className='mb-3'>
-                                    <Form.Label htmlFor="strDrink">Nombre Bebida</Form.Label>
+                                    <Form.Label htmlFor="strDrink" className='text-white'>Nombre Bebida</Form.Label>
                                     <Field
                                         id="strDrink"
                                         /* type="text" */
@@ -57,7 +57,7 @@ export default function SearchForm(){
                             </Col>
                             <Col md={6}>
                                 <Form.Group className='mb-3'>
-                                    <Form.Label htmlFor="category">Categoria Bebida</Form.Label>
+                                    <Form.Label htmlFor="category" className='text-white'>Categoria Bebida</Form.Label>
                                     <Field
                                     id="category"
                                     name="category"
