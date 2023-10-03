@@ -1,5 +1,5 @@
-import { BrowserRouter as Router } from "react-router-dom";
-import { AuthProvider } from "./context/AuthProvide";
+/* import { BrowserRouter as Router } from "react-router-dom";
+import { AuthProvider } from "./context/AuthProvide"; */
 import { CartProvider } from "./context/CartProvider";
 import { CategoriesProvider } from "./context/CategoriesProvider";
 import { DrinksProvider } from "./context/DrinksProvider";
