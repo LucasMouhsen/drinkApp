@@ -24,13 +24,3 @@ export default function Header() {
         </Navbar>
     )
 }
-{/* <header className={`py-5 ${styles.header}`}>
-            <h1>Buscador de Bebidas</h1>
-            
-            <br />
-            <a href="/register">Registro</a>
-            <br />
-            <a href="/login">Login</a>
-            <br />
-            <a href="/">Inicio</a>
-        </header> */}

@@ -1,17 +1,18 @@
-import { Card, Row } from 'react-bootstrap';
+import { Row } from 'react-bootstrap';
 import { useDrinks } from "../../hooks/useDrinks";
 import DrinkCard from '../DrinkCard';
+import DrinkCardEmpty from '../DrinkCardEmpty';
 
 
-export default function DrinksList() {
-    const { drinks, random } = useDrinks()
+export default function DrinkRandom() {
+    const { random } = useDrinks()
 
-    if (drinks.length === 0 && random.length === 0) {
+    if (random.length === 0) {
         return (
             <>
 
                 <Row className='mt-5 justify-content-center'>
-                    <Card.Title>No hay resultados</Card.Title>
+                    <DrinkCardEmpty/>
                 </Row>
             </>
 
@@ -19,12 +20,13 @@ export default function DrinksList() {
     }
 
     return (
-            <Row className='mt-5'>
+            <Row className='mt-5 justify-content-center'>
                 {
-                    drinks.map((drink) => (
+                    random.map((drink) => (
                         <DrinkCard key={drink.idDrink} drink={drink} />
                     ))
                 }
             </Row>
+            
     )
 }
