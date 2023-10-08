@@ -4,27 +4,24 @@ import DrinkCard from '../DrinkCard';
 
 
 export default function DrinksList() {
-    const { drinks, random } = useDrinks()
+    const { drinks } = useDrinks()
 
-    if (drinks.length === 0 && random.length === 0) {
+    if (drinks.length === 0) {
         return (
-            <>
-
-                <Row className='mt-5 justify-content-center'>
-                    <Card.Title>No hay resultados</Card.Title>
-                </Row>
-            </>
+            <Row className='mt-5 justify-content-center'>
+                <Card.Title>No hay resultados</Card.Title>
+            </Row>
 
         )
     }
 
     return (
-            <Row className='mt-5'>
-                {
-                    drinks.map((drink) => (
-                        <DrinkCard key={drink.idDrink} drink={drink} />
-                    ))
-                }
-            </Row>
+        <Row className='mt-5'>
+            {
+                drinks.map((drink) => (
+                    <DrinkCard key={drink.idDrink} drink={drink} />
+                ))
+            }
+        </Row>
     )
 }
